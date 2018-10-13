@@ -23,6 +23,7 @@ export default compose(
   withHandlers({
     onCategoryChange: ({ history }) => (category) => {
       history.push('/categories/' + category.id);
+      document.location.reload();
     }
   })
 )(PostsSearch);
