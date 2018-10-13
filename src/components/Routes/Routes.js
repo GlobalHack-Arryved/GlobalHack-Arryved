@@ -12,6 +12,7 @@ import { PostContainer as Post } from '../Post';
 import { CommunityContainer as Community } from '../Register/Community';
 import { ProfileContainer as Profile } from '../Register/Profile';
 import { CategoriesContainer as Categories } from '../Categories';
+import { AddPostContainer as AddPost } from '../AddPost';
 
 class Routes extends Component {
   render() {
