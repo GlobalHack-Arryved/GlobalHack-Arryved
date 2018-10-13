@@ -1,15 +1,20 @@
-import React, { PureComponent } from 'react';
-import { ControlGroup, Button, Popover, InputGroup, HTMLSelect } from '@blueprintjs/core';
+import React, { Component } from 'react';
+import { ControlGroup, Button, Popover, InputGroup } from '@blueprintjs/core';
 import { Menu, MenuItem } from '@blueprintjs/core';
 
-class AppSearch extends PureComponent {
+class AppSearch extends Component {
   renderCategoryMenu() {
     const { t } = this.props;
 
     return (
       <Menu>
         {this.props.categories.data.map(category =>
-          <MenuItem key={category.id} icon={category.icon} text={t(category.name)} />
+          <MenuItem
+            key={category.id}
+            icon={category.icon}
+            text={t(category.name)}
+            onClick={() => this.props.onCategoryChange(category)}
+          />
         )}
       </Menu>
     );
@@ -20,7 +25,11 @@ class AppSearch extends PureComponent {
     
     return (
       <Popover content={this.renderCategoryMenu()}>
-        <Button rightIcon="caret-down" text={t('Employment')} minimal />
+        <Button
+          rightIcon="caret-down"
+          text={t(this.props.selectedCategory.data.name)}
+          minimal
+        />
       </Popover>
     );
   }

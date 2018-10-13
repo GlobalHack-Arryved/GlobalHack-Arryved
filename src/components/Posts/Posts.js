@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import { PostsSearchContainer as PostsSearch } from '.';
 import { PostWrapper, Post, PostTitle, PostBody } from './PostsComponents';
 import { Icon } from '@blueprintjs/core';
 
@@ -19,6 +20,7 @@ class Posts extends PureComponent {
   render() {
     return (
       <PostWrapper>
+        <PostsSearch currentCategoryId={this.props.match.params.category} />
         {this.props.posts.data.map(this.renderPost.bind(this))}
       </PostWrapper>
     );

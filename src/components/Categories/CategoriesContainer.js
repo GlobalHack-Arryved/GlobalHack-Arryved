@@ -1,3 +1,4 @@
+import { withRouter } from 'react-router-dom';
 import { withNamespaces } from 'react-i18next';
 import { compose, withStateHandlers, withHandlers } from 'recompose';
 import { withFirebaseCollection } from '../HOC/Firebase';
@@ -5,6 +6,8 @@ import firebase from 'firebase';
 import Categories from './Categories';
 
 export default compose(
+  withRouter,
+
   withNamespaces(),
 
   withStateHandlers(
