@@ -31,7 +31,7 @@ class Routes extends Component {
             <ProtectedRoute exact path="/" component={Home} />
             
             <ProtectedRoute exact path="/posts/:id" component={Post} />
-            {/* <ProtectedRoute exact path="/add-post" component={AddPost} /> */}
+            <ProtectedRoute exact path="/add-post" component={AddPost} />
             
             <ProtectedRoute exact path="/categories" component={Categories} />
             <ProtectedRoute exact path="/categories/:category" component={Posts} />
