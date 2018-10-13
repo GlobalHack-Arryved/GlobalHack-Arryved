@@ -6,6 +6,7 @@ import { LocaleBarContainer as LocaleBar } from '../LocaleBar';
 import { HomeContainer as Home } from '../Home';
 import { LoginContainer as Login } from '../Login';
 import { RegisterContainer as Register } from '../Register';
+import { ProfileContainer as Profile } from '../Register/Profile';
 
 class Routes extends Component {
   render() {
@@ -22,7 +23,8 @@ class Routes extends Component {
           <Switch>
             <ProtectedRoute exact path="/" component={Home} />
             <Route path="/login" component={Login} />
-            <Route path="/register" component={Register} />
+            <Route exact path="/register" component={Register} />
+            <Route exact path="/register/profile" component={Profile} />
           </Switch>
         </React.Fragment>
       </Router>
