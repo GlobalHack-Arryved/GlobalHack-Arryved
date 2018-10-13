@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './i18n';
 
 import firebase from 'firebase/app';
 import 'firebase/auth';
