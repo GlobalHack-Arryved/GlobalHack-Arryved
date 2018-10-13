@@ -37,6 +37,10 @@ export const RegisterHero = styled.div`
 export const RegisterContent = styled.form`
   padding: 30px;
   flex: 0.5;
+
+  .bp3-popover-target {
+    width: 100%;
+  }
 `;
 
 export const RegisterError = styled(Callout).attrs({
