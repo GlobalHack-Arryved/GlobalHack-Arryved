@@ -37,7 +37,6 @@ class Profile extends Component {
                 placeholder={t('Name (optional)')}
                 value={this.props.name}
                 onChange={this.props.onNameChange}
-                required
               />
             </FormGroup>
 
@@ -51,7 +50,6 @@ class Profile extends Component {
                 placeholder={t('Bio (optional)')}
                 value={this.props.bio}
                 onChange={this.props.onBioChange}
-                required
               />
             </FormGroup>
 
