@@ -16,8 +16,11 @@ export const Post = styled.button`
 
   background: none;
   border: none;
-  border-bottom: 1px solid ${Colors.LIGHT_GRAY1};
-  
+  border-top: 1px solid ${Colors.LIGHT_GRAY1};
+
+  &:last-child {
+    border-bottom: 1px solid ${Colors.LIGHT_GRAY1};
+  }
 
   &:active {
     background-color: ${Colors.LIGHT_GRAY4};

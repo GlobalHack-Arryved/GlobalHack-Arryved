@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import ProtectedRoute from './ProtectedRoute';
 import { AppNavbarContainer as AppNavbar } from '../App';
+import { AppSearchContainer as AppSearch } from '../App';
 import { LocaleBarContainer as LocaleBar } from '../LocaleBar';
 import { HomeContainer as Home } from '../Home';
 import { PostsContainer as Posts } from '../Posts';
@@ -20,6 +21,7 @@ class Routes extends Component {
       <Router>
         <React.Fragment>
           <AppNavbar />
+          <AppSearch />
           <LocaleBar />
 
           <Switch>
