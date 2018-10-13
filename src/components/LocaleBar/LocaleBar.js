@@ -7,8 +7,11 @@ class LocaleBar extends PureComponent {
     return (
       <LocaleNavbar>
         <HTMLSelect value={this.props.language} onChange={this.props.onLanguageUpdate} fill>
-          <option value="en">English</option>
-          <option value="es">Español</option>
+          {
+            this.props.languages.data.map(language =>
+              <option key={language.id} value={language.locale}>{language.name}</option>
+            )
+          }
         </HTMLSelect>
 
         <Switch
