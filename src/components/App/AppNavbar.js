@@ -31,6 +31,14 @@ class AppNavbar extends PureComponent {
           {
             firebase.auth().currentUser &&
             <Button
+              icon="user"
+              minimal
+            />
+          }
+
+          {
+            firebase.auth().currentUser &&
+            <Button
               onClick={this.props.onLogout}
               icon="log-out"
               minimal
