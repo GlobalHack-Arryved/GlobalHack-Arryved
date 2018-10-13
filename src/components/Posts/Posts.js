@@ -8,7 +8,7 @@ class Posts extends PureComponent {
       <Post key={post.id} onClick={() => this.props.history.push('/posts/' + post.id)}>
         <div style={{ flex: 1 }}>
           <PostTitle>{post.title}</PostTitle>
-          <PostBody>{post.body}</PostBody>
+          <PostBody>{post.body.substr(0, 256)}</PostBody>
         </div>
 
         <Icon icon="chevron-right" />
