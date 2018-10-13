@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { RegisterContainer, RegisterPage, RegisterHero, RegisterContent, RegisterError, RegisterActions } from '../RegisterComponents';
-import { HTMLSelect, Button, Intent, Menu, MenuItem, MenuDivider, FormGroup } from '@blueprintjs/core';
-import { Select } from '@blueprintjs/select';
+import { RegisterContainer, RegisterPage, RegisterHero, RegisterContent, RegisterError, RegisterActions, RegisterSteps, RegisterStep, RegisterIcon } from '../RegisterComponents';
+import { HTMLSelect, Button, Intent, Menu, MenuItem, MenuDivider, FormGroup, Icon } from '@blueprintjs/core';
 
 class Immigration extends Component {
   renderImmigrationStatusList() {
@@ -24,6 +23,17 @@ class Immigration extends Component {
       <RegisterPage>
         <RegisterContainer>
           <RegisterHero>
+            <RegisterSteps>
+              <RegisterStep>1</RegisterStep>
+              <RegisterStep>2</RegisterStep>
+              <RegisterStep>3</RegisterStep>
+              <RegisterStep active>4</RegisterStep>
+            </RegisterSteps>
+
+            <RegisterIcon>
+              <Icon icon="airplane" color="#FFF" iconSize={48} />
+            </RegisterIcon>
+
             <h1>{t('Immigration')}</h1>
             <p>{t('Help Aryvved users understand where you are in your immigration journey.')}</p>
           </RegisterHero>

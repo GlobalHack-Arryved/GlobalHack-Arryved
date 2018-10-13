@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { RegisterContainer, RegisterPage, RegisterHero, RegisterContent, RegisterError, RegisterActions } from './RegisterComponents';
-import { FormGroup, InputGroup, Button, Intent } from '@blueprintjs/core';
+import { RegisterContainer, RegisterPage, RegisterHero, RegisterContent, RegisterError, RegisterActions, RegisterSteps, RegisterStep, RegisterIcon } from './RegisterComponents';
+import { FormGroup, InputGroup, Button, Intent, Icon } from '@blueprintjs/core';
 
 class Register extends Component {
   render() {
@@ -11,8 +11,19 @@ class Register extends Component {
       <RegisterPage>
         <RegisterContainer>
           <RegisterHero>
-            <h1>{t('Welcome to Nearby!')}</h1>
-            <p>{t('Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.')}</p>
+            <RegisterSteps>
+              <RegisterStep active>1</RegisterStep>
+              <RegisterStep>2</RegisterStep>
+              <RegisterStep>3</RegisterStep>
+              <RegisterStep>4</RegisterStep>
+            </RegisterSteps>
+
+            <RegisterIcon>
+              <Icon icon="user" color="#FFF" iconSize={48} />
+            </RegisterIcon>
+
+            <h1>{t('Register')}</h1>
+            <p className="bp3-text-muted">{t('Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.')}</p>
           </RegisterHero>
 
           <RegisterContent onSubmit={this.props.onSubmit}>
@@ -23,6 +34,7 @@ class Register extends Component {
             <FormGroup
               label={t('Email')}
               labelFor="email"
+              labelInfo={t('(required)')}
             >
               <InputGroup
                 id="email"
@@ -37,6 +49,7 @@ class Register extends Component {
             <FormGroup
               label={t('Password')}
               labelFor="password"
+              labelInfo={t('(required)')}
             >
               <InputGroup
                 id="password"
@@ -53,11 +66,9 @@ class Register extends Component {
                 intent={Intent.PRIMARY}
                 text={t('Create Account')}
                 type="submit"
+                fill
+                large
               />
-
-              <Link to="/login">
-                {t('Already have an account?')}
-              </Link>
             </RegisterActions>
           </RegisterContent>
         </RegisterContainer>

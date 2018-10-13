@@ -6,9 +6,12 @@ import {
   RegisterHero,
   RegisterContent,
   RegisterError,
-  RegisterActions
+  RegisterActions,
+  RegisterSteps,
+  RegisterStep,
+  RegisterIcon
 } from '../RegisterComponents';
-import { FormGroup, InputGroup, Button, Intent } from '@blueprintjs/core';
+import { FormGroup, InputGroup, Button, Intent, Icon } from '@blueprintjs/core';
 
 class Profile extends Component {
   render() {
@@ -18,6 +21,17 @@ class Profile extends Component {
       <RegisterPage>
         <RegisterContainer>
           <RegisterHero>
+            <RegisterSteps>
+              <RegisterStep>1</RegisterStep>
+              <RegisterStep>2</RegisterStep>
+              <RegisterStep active>3</RegisterStep>
+              <RegisterStep>4</RegisterStep>
+            </RegisterSteps>
+
+            <RegisterIcon>
+              <Icon icon="user" color="#FFF" iconSize={48} />
+            </RegisterIcon>
+
             <h1>{t('Profile')}</h1>
             <p>{t('Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.')}</p>
           </RegisterHero>
@@ -30,11 +44,12 @@ class Profile extends Component {
             <FormGroup
               label={t('Name')}
               labelFor="name"
+              labelInfo={t('(optional)')}
             >
               <InputGroup
                 id="name"
                 type="name"
-                placeholder={t('Name (optional)')}
+                placeholder={t('Name')}
                 value={this.props.name}
                 onChange={this.props.onNameChange}
               />
@@ -43,11 +58,12 @@ class Profile extends Component {
             <FormGroup
               label={t('Bio')}
               labelFor="bio"
+              labelInfo={t('(optional)')}
             >
               <InputGroup
                 id="bio"
                 type="bio"
-                placeholder={t('Bio (optional)')}
+                placeholder={t('Bio')}
                 value={this.props.bio}
                 onChange={this.props.onBioChange}
               />
@@ -59,10 +75,6 @@ class Profile extends Component {
                 text={t('Next')}
                 type="submit"
               />
-
-              <Link to="/login">
-                {t('Already have an account?')}
-              </Link>
             </RegisterActions>
           </RegisterContent>
         </RegisterContainer>

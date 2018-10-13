@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import firebase from 'firebase';
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import ProtectedRoute from './ProtectedRoute';
 import { AppNavbarContainer as AppNavbar } from '../App';
@@ -36,7 +37,11 @@ class Routes extends Component {
     return (
       <Router>
         <React.Fragment>
-          <AppNavbar />
+          {
+            firebase.auth().currentUser &&
+            <AppNavbar />
+          }
+
           <LocaleBar />
 
           <Switch>
