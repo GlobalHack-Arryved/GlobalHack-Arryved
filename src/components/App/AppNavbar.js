@@ -4,6 +4,8 @@ import firebase from 'firebase';
 
 class AppNavbar extends PureComponent {
   render() {
+    const { t } = this.props;
+    
     return (
       <Navbar>
         <NavbarGroup align={Alignment.LEFT}>
@@ -16,7 +18,7 @@ class AppNavbar extends PureComponent {
           <Button
             onClick={() => this.props.history.push('/')}
             icon="home"
-            text="Home"  
+            text={t('Home')}
             minimal
           />
         </NavbarGroup>
@@ -26,7 +28,7 @@ class AppNavbar extends PureComponent {
             firebase.auth().currentUser &&
             <Button
               onClick={this.props.onLogout}
-              text="Logout"  
+              text={t('Logout')}
               minimal
             />
           }

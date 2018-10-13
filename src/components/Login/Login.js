@@ -4,15 +4,14 @@ import { FormGroup, InputGroup, Button, Intent } from '@blueprintjs/core';
 
 class Login extends Component {
   render() {
+    const { t } = this.props;
+
     return (
       <LoginPage>
         <LoginContainer>
           <LoginHero>
-            <h1>Sign in!</h1>
-
-            <p className="bp3-text-muted bp3-text-small">
-              Need an account? You can create one in the <a href="https://console.firebase.google.com/u/3/project/globalhack-vii-yeti/authentication/users" target="_blank">Firebase dashboard</a>.
-            </p>
+            <h1>{t('Sign in!')}</h1>
+            <p>{t('Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.')}</p>
           </LoginHero>
 
           <LoginContent onSubmit={this.props.onSubmit}>
@@ -21,13 +20,13 @@ class Login extends Component {
             </LoginError>
 
             <FormGroup
-              label="Email"
+              label={t('Email')}
               labelFor="email"
             >
               <InputGroup
                 id="email"
                 type="email"
-                placeholder="someone@gmail.com"
+                placeholder={t('someone@gmail.com')}
                 value={this.props.email}
                 onChange={this.props.onEmailChange}
                 required
@@ -35,13 +34,13 @@ class Login extends Component {
             </FormGroup>
 
             <FormGroup
-              label="Password"
+              label={t('Password')}
               labelFor="password"
             >
               <InputGroup
                 id="password"
                 type="password"
-                placeholder="Password"
+                placeholder={t('Password')}
                 value={this.props.password}
                 onChange={this.props.onPasswordChange}
                 required
@@ -50,7 +49,7 @@ class Login extends Component {
 
             <Button
               intent={Intent.PRIMARY}
-              text="Sign In"
+              text={t('Sign In')}
               type="submit"
             />
           </LoginContent>
