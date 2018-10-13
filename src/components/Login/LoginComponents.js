@@ -26,11 +26,7 @@ export const LoginHero = styled.div`
   flex: 0.5;
 
   h1 {
-    margin: 0;
-  }
-  
-  p {
-    margin-bottom: 0;
+    margin-top: 0;
   }
 `;
 

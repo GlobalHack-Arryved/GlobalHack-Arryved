@@ -30,7 +30,7 @@ export default compose(
       
       try {
         await firebase.auth().createUserWithEmailAndPassword(email, password);
-        history.replace('/');
+        history.replace('/register/community');
       } catch (err) {
         onError(err.message);
       }

@@ -1,26 +1,30 @@
 import React, { PureComponent } from 'react';
-import { Navbar, NavbarGroup, NavbarHeading, NavbarDivider, Button, Alignment } from '@blueprintjs/core';
+import { Navbar, NavbarGroup, Button, Alignment, Menu, MenuItem, Popover, NavbarHeading, ControlGroup, NavbarDivider } from '@blueprintjs/core';
+import { InputGroup } from '@blueprintjs/core';
 import firebase from 'firebase';
 
 class AppNavbar extends PureComponent {
+  renderLocationMenu() {
+    return (
+      <Menu>
+        {this.props.cities.data.map(city =>
+          <MenuItem key={city.id} icon="circle" text={city.name + ', ' + city.state} />
+        )}
+      </Menu>
+    );
+  }
+
   render() {
-    const { t } = this.props;
-    
     return (
       <Navbar>
         <NavbarGroup align={Alignment.LEFT}>
           <NavbarHeading>
-            GlobalHack VII
+            Arryved
           </NavbarHeading>
-          
-          <NavbarDivider />
 
-          <Button
-            onClick={() => this.props.history.push('/')}
-            icon="home"
-            text={t('Home')}
-            minimal
-          />
+          <Popover content={this.renderLocationMenu()}>
+            <Button icon="map-marker" text="St. Louis, MO" rightIcon="caret-down" />
+          </Popover>
         </NavbarGroup>
 
         <NavbarGroup align={Alignment.RIGHT}>
@@ -28,7 +32,7 @@ class AppNavbar extends PureComponent {
             firebase.auth().currentUser &&
             <Button
               onClick={this.props.onLogout}
-              text={t('Logout')}
+              icon="log-out"
               minimal
             />
           }

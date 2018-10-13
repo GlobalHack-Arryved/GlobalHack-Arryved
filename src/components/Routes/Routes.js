@@ -2,11 +2,16 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import ProtectedRoute from './ProtectedRoute';
 import { AppNavbarContainer as AppNavbar } from '../App';
+import { AppSearchContainer as AppSearch } from '../App';
 import { LocaleBarContainer as LocaleBar } from '../LocaleBar';
 import { HomeContainer as Home } from '../Home';
+import { PostsContainer as Posts } from '../Posts';
 import { LoginContainer as Login } from '../Login';
 import { RegisterContainer as Register } from '../Register';
 import { PostContainer as Post } from '../Post';
+import { CommunityContainer as Community } from '../Register/Community';
+import { ProfileContainer as Profile } from '../Register/Profile';
+import { CategoriesContainer as Categories } from '../Categories';
 
 class Routes extends Component {
   render() {
@@ -18,13 +23,19 @@ class Routes extends Component {
       <Router>
         <React.Fragment>
           <AppNavbar />
+          <AppSearch />
           <LocaleBar />
 
           <Switch>
             <ProtectedRoute exact path="/" component={Home} />
             <ProtectedRoute path="/posts/:id" component={Post} />
-            <Route path="/login" component={Login} />
-            <Route path="/register" component={Register} />
+            
+            <Route exact path="/login" component={Login} />
+
+            <Route exact path="/register" component={Register} />
+            <ProtectedRoute exact path="/register/profile" component={Profile} />
+            <ProtectedRoute exact path="/register/community" component={Community} />
+            <Route exact path="/categories" component={Categories} />>
           </Switch>
         </React.Fragment>
       </Router>
