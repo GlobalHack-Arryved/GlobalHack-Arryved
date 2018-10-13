@@ -8,7 +8,7 @@ export const LocaleNavbar = styled(Navbar)`
 
   position: fixed;
   bottom: 15px;
-  right: 15px;
+  left: 15px;
   border-radius: 5px;
   width: 280px;
   overflow: hidden;
