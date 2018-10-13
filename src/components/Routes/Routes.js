@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-d
 import ProtectedRoute from './ProtectedRoute';
 import { AppNavbarContainer as AppNavbar } from '../App';
 import { LocaleBarContainer as LocaleBar } from '../LocaleBar';
-import { HomeContainer as Home } from '../Home';
 import { PostsContainer as Posts } from '../Posts';
 import { LoginContainer as Login } from '../Login';
 import { RegisterContainer as Register } from '../Register';
