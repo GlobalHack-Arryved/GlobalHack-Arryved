@@ -22,7 +22,7 @@ class Profile extends Component {
             <p>{t('Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.')}</p>
           </RegisterHero>
 
-          <RegisterContent>
+          <RegisterContent onSubmit={this.props.onSubmit}>
             <RegisterError visible={this.props.error}>
               {this.props.error}
             </RegisterError>
