@@ -29,7 +29,7 @@ export default compose(
       e.preventDefault();
       
       try {
-        await firebase.auth().signInWithEmailAndPassword(email, password);
+        await firebase.auth().createUserWithEmailAndPassword(email, password);
         history.replace('/');
       } catch (err) {
         onError(err.message);
