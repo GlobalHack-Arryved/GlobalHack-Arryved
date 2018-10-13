@@ -39,7 +39,7 @@ export default compose(
           merge: true
         });
 
-        history.push('/');
+        history.push('/register/immigration');
       } catch (err) {
         onError(err.message);
         console.log(err.message);

@@ -9,6 +9,7 @@ import { RegisterContainer as Register } from '../Register';
 import { PostContainer as Post } from '../Post';
 import { CommunityContainer as Community } from '../Register/Community';
 import { ProfileContainer as Profile } from '../Register/Profile';
+import { ImmigrationContainer as Immigration } from '../Register/Immigration';
 import { CategoriesContainer as Categories } from '../Categories';
 import { AddPostContainer as AddPost } from '../AddPost';
 import { Spinner } from '@blueprintjs/core';
@@ -56,6 +57,7 @@ class Routes extends Component {
             <Route exact path="/register" component={Register} />
             <ProtectedRoute exact path="/register/profile" component={Profile} />
             <ProtectedRoute exact path="/register/community" component={Community} />
+            <ProtectedRoute exact path="/register/immigration" component={Immigration} />
           </Switch>
         </React.Fragment>
       </Router>
