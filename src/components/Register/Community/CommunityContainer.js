@@ -1,10 +1,13 @@
 import firebase from 'firebase';
 import { compose, withStateHandlers, withHandlers } from 'recompose';
+import { withRouter } from 'react-router-dom';
 import { withNamespaces } from 'react-i18next';
 import { withFirebaseCollection } from '../../HOC/Firebase';
 import Community from './Community';
 
 export default compose(
+  withRouter,
+
   withNamespaces(),
   
   withFirebaseCollection(
@@ -31,7 +34,7 @@ export default compose(
   ),
 
   withHandlers({
-    onSubmit: ({ city, community, t, onError }) => async (e) => {
+    onSubmit: ({ city, community, history, t, onError }) => async (e) => {
       e.preventDefault();
 
       if (city === '') {
@@ -58,6 +61,8 @@ export default compose(
         }, {
           merge: true
         });
+
+        history.replace('/register/profile');
       } catch (err) {
         onError(err);
       }

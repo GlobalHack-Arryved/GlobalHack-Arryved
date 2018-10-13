@@ -1,9 +1,12 @@
+import { withRouter } from 'react-router-dom';
 import { withNamespaces } from 'react-i18next';
 import { compose, withStateHandlers, withHandlers } from 'recompose';
 import firebase from 'firebase';
 import Profile from './Profile';
 
 export default compose(
+  withRouter,
+
   withNamespaces(),
 
   withStateHandlers(
@@ -32,9 +35,11 @@ export default compose(
         await userRef.set({
           name,
           bio
+        }, {
+          merge: true
         });
 
-        history.push('/register/personal');
+        history.push('/');
       } catch (err) {
         onError(err.message);
         console.log(err.message);
