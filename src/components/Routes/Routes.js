@@ -7,6 +7,7 @@ import { HomeContainer as Home } from '../Home';
 import { PostsContainer as Posts } from '../Posts';
 import { LoginContainer as Login } from '../Login';
 import { RegisterContainer as Register } from '../Register';
+import { PostContainer as Post } from '../Post';
 import { CommunityContainer as Community } from '../Register/Community';
 import { ProfileContainer as Profile } from '../Register/Profile';
 import { CategoriesContainer as Categories } from '../Categories';
@@ -27,6 +28,9 @@ class Routes extends Component {
             <Route exact path="/login" component={Login} />
             
             <ProtectedRoute exact path="/" component={Home} />
+            
+            <ProtectedRoute exact path="/posts/:id" component={Post} />
+            {/* <ProtectedRoute exact path="/add-post" component={AddPost} /> */}
             
             <ProtectedRoute exact path="/categories" component={Categories} />
             <ProtectedRoute exact path="/categories/:category" component={Posts} />
