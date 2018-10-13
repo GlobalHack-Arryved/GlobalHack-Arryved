@@ -3,6 +3,10 @@ import SearchInput from './SearchInput';
 
 export const PageContainer = styled.div`
   padding: 30px;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
 `;
 
 export const StyledSearchInput = styled(SearchInput).attrs({

@@ -9,6 +9,7 @@ import { LoginContainer as Login } from '../Login';
 import { RegisterContainer as Register } from '../Register';
 import { CommunityContainer as Community } from '../Register/Community';
 import { ProfileContainer as Profile } from '../Register/Profile';
+import { CategoriesContainer as Categories } from '../Categories';
 
 class Routes extends Component {
   render() {
@@ -31,6 +32,7 @@ class Routes extends Component {
             <Route exact path="/register" component={Register} />
             <ProtectedRoute exact path="/register/profile" component={Profile} />
             <ProtectedRoute exact path="/register/community" component={Community} />
+            <Route exact path="/categories" component={Categories} />>
           </Switch>
         </React.Fragment>
       </Router>
