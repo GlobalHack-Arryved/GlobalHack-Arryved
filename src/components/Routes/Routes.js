@@ -36,6 +36,7 @@ class Routes extends Component {
             <ProtectedRoute exact path="/register/profile" component={Profile} />
             <ProtectedRoute exact path="/register/community" component={Community} />
             <ProtectedRoute exact path="/categories" component={Categories} />
+            <ProtectedRoute exact path="/add-post" component={AddPost} />
           </Switch>
         </React.Fragment>
       </Router>
