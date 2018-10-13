@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './i18n';
+import { FocusStyleManager } from '@blueprintjs/core';
 
 import firebase from 'firebase/app';
 import 'firebase/auth';
@@ -13,6 +14,8 @@ import { RoutesContainer as Routes } from '../Routes';
 
 class App extends Component {
   render() {
+    FocusStyleManager.onlyShowFocusOnTabs();
+
     firebase.initializeApp({
       apiKey: "AIzaSyAQ7hcpPCNg81xqZE2hjBSTWK9OWcx7kVM",
       authDomain: "globalhack-vii-yeti.firebaseapp.com",
