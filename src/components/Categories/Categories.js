@@ -20,7 +20,7 @@ class Categories extends Component {
                 }}
               >
                 <Icon icon={c.icon} iconSize={20} />
-                <p>{t(`Search ${c.name}`)}</p>
+                <p>{t(c.name)}</p>
               </TopButton>
             )
             : <Spinner />
