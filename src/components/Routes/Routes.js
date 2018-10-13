@@ -4,6 +4,7 @@ import ProtectedRoute from './ProtectedRoute';
 import { AppNavbarContainer as AppNavbar } from '../App';
 import { HomeContainer as Home } from '../Home';
 import { LoginContainer as Login } from '../Login';
+import { RegisterContainer as Register } from '../Register';
 
 class Routes extends Component {
   render() {
@@ -19,6 +20,7 @@ class Routes extends Component {
           <Switch>
             <ProtectedRoute exact path="/" component={Home} />
             <Route path="/login" component={Login} />
+            <Route path="/register" component={Register} />
           </Switch>
         </React.Fragment>
       </Router>
