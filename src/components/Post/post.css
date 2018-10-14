@@ -46,10 +46,30 @@
 .avatar-blurb {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 .post-comment-author-wrapper {
   display: flex;
   justify-content: space-between;
+}
+
+.post-comment-author-timestamp {
+  font-size: 9px;
+  color: rgba(0,0,0,0.38);
+  text-align: right;
+  font-weight: 600;
+}
+
+.tag-wrapper > span > span {
+  font-size: 9px;
+}
+
+.tag-wrapper {
+  padding: 0 12px;
+}
+
+.avatar-title-wrapper {
+  display: flex;
+  flex-direction: row;
 }
