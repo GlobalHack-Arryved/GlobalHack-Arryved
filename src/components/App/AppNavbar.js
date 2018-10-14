@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import { Navbar, NavbarGroup, Button, Alignment, Menu, MenuItem, Popover, NavbarHeading, ControlGroup, NavbarDivider } from '@blueprintjs/core';
 import { InputGroup } from '@blueprintjs/core';
+import { Link } from 'react-router-dom';
 import firebase from 'firebase';
 
 class AppNavbar extends PureComponent {
@@ -19,7 +20,9 @@ class AppNavbar extends PureComponent {
       <Navbar>
         <NavbarGroup align={Alignment.LEFT}>
           <NavbarHeading>
-            <img src={require('./arryved.png')} height={25}/>
+            <Link to="/">
+              <img src={require('./arryved.png')} style={{ marginBottom: -9 }} height={25}/>
+            </Link>
           </NavbarHeading>
 
           <Popover content={this.renderLocationMenu()}>
