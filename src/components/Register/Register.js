@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { RegisterContainer, RegisterPage, RegisterHero, RegisterContent, RegisterError, RegisterActions, RegisterSteps, RegisterStep, RegisterIcon } from './RegisterComponents';
-import { FormGroup, InputGroup, Button, Intent, Icon } from '@blueprintjs/core';
+import { FormGroup, HTMLSelect, InputGroup, Button, Intent, Icon } from '@blueprintjs/core';
 
 class Register extends Component {
   render() {
@@ -59,6 +59,22 @@ class Register extends Component {
                 onChange={this.props.onPasswordChange}
                 required
               />
+            </FormGroup>
+
+            <FormGroup
+              label={t('Language')}
+              labelInfo={t('(required)')}
+            >
+              <HTMLSelect
+                value={this.props.language}
+                onChange={this.props.onLanguageChange}
+                fill
+                large
+              >
+                {this.props.languages.data.map(language =>
+                  <option key={language.id} value={language.id}>{language.name}</option>
+                )}
+              </HTMLSelect>
             </FormGroup>
 
             <RegisterActions>
