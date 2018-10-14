@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import PostComment from './PostComment';
+import PostComment from './PostCommentContainer';
 
 class PostComments extends PureComponent {
   render() {
