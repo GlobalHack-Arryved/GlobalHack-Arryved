@@ -11,6 +11,8 @@
     "i18next-browser-languagedetector": "^2.2.3",
     "i18next-locize-backend": "^1.6.0",
     "locize-editor": "^1.7.0",
+    "moment": "^2.22.2",
+    "moment-with-locales-es6": "^1.0.1",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-i18next": "^8.0.7",
