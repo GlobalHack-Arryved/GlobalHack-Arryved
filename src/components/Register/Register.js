@@ -10,7 +10,7 @@ class Register extends Component {
     return (
       <RegisterPage>
         <RegisterContainer>
-          <RegisterHero>
+          <RegisterHero spacious>
             <RegisterSteps>
               <RegisterStep active>1</RegisterStep>
               <RegisterStep>2</RegisterStep>
@@ -23,7 +23,7 @@ class Register extends Component {
             </RegisterIcon>
 
             <h1>{t('Register')}</h1>
-            <p className="bp3-text-muted">{t('Arryved lets you connect with people in your community and build your life.')}</p>
+            <p className="bp3-text-muted">{t('Finding your way in a new place can be tricky. Arryved is here to help you connect with others who share your culture and help you find your community. Welcome home.')}</p>
           </RegisterHero>
 
           <RegisterContent onSubmit={this.props.onSubmit}>

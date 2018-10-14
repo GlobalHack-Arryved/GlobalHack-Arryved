@@ -20,8 +20,7 @@ export const RegisterContainer = styled.div`
 export const RegisterHero = styled.div`
   border-bottom: 1px solid ${Colors.LIGHT_GRAY1};
   background-color: ${Colors.WHITE};
-  padding: 55px;
-  padding-right: 150px;
+  padding: ${props => props.spacious ? '55px 55px 30px 55px' : '55px 150px 55px 55px'};
 
   h1 {
     margin: 40px 0 10px 0;
