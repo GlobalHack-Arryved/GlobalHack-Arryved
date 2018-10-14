@@ -30,7 +30,7 @@ export default compose(
       
       try {
         await firebase.auth().signInWithEmailAndPassword(email, password);
-        history.replace('/');
+        history.replace('/categories');
       } catch (err) {
         onError(err.message);
       }
