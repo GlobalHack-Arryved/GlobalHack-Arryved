@@ -19,7 +19,7 @@ class AppNavbar extends PureComponent {
       <Navbar>
         <NavbarGroup align={Alignment.LEFT}>
           <NavbarHeading>
-            Arryved
+            <img src={require('./arryved.png')} height={25}/>
           </NavbarHeading>
 
           <Popover content={this.renderLocationMenu()}>
