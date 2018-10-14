@@ -8,7 +8,16 @@ export default compose(
   withRouter,
 
   withFirebaseCollection(
-    () => firebase.firestore().collection('posts'),
+    ({ match }) => (
+      firebase
+        .firestore()
+        .collection('posts')
+        .where(
+          'category',
+          '==',
+          firebase.firestore().collection('categories').doc(match.params.category)
+        )
+    ),
     'posts'
   )
 )(Posts);

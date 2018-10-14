@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
-import { RegisterContainer, RegisterPage, RegisterHero, RegisterContent, RegisterError, RegisterActions } from '../RegisterComponents';
-import { FormGroup, InputGroup, MenuItem, HTMLSelect, Button, Intent } from '@blueprintjs/core';
+import { RegisterContainer, RegisterPage, RegisterHero, RegisterContent } from '../RegisterComponents';
+import { RegisterError, RegisterActions, RegisterSteps, RegisterStep, RegisterIcon } from '../RegisterComponents';
+import { FormGroup, Icon, MenuItem, HTMLSelect, Button, Intent } from '@blueprintjs/core';
 
 class Community extends PureComponent {
   renderNonIdealState() {
@@ -26,6 +27,17 @@ class Community extends PureComponent {
       <RegisterPage>
         <RegisterContainer>
           <RegisterHero>
+            <RegisterSteps>
+              <RegisterStep>1</RegisterStep>
+              <RegisterStep active>2</RegisterStep>
+              <RegisterStep>3</RegisterStep>
+              <RegisterStep>4</RegisterStep>
+            </RegisterSteps>
+
+            <RegisterIcon>
+              <Icon icon="people" color="#FFF" iconSize={48} />
+            </RegisterIcon>
+
             <h1>{t('Community')}</h1>
             <p>{t('Community is where you hang your hat after a long day of rest.')}</p>
           </RegisterHero>

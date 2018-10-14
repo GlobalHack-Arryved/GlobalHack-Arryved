@@ -15,11 +15,13 @@ export default compose(
   withStateHandlers(
     () => ({
       language: 'en',
-      rtl: false
+      rtl: false,
+      open: false
     }),
     {
       onLanguageChange: () => (language) => ({ language }),
-      onRtlChange: () => (rtl) => ({ rtl })
+      onRtlChange: () => (rtl) => ({ rtl }),
+      onToggleOpen: ({ open }) => () => ({ open: !open })
     }
   ),
 

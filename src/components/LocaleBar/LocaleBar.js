@@ -1,11 +1,11 @@
 import React, { PureComponent } from 'react';
-import { LocaleNavbar } from './LocaleBarComponents';
-import { Switch, HTMLSelect } from '@blueprintjs/core';
+import { LocaleNavbar, Handle } from './LocaleBarComponents';
+import { Switch, HTMLSelect, Icon } from '@blueprintjs/core';
 
 class LocaleBar extends PureComponent {
   render() {
     return (
-      <LocaleNavbar>
+      <LocaleNavbar open={this.props.open}>
         <HTMLSelect value={this.props.language} onChange={this.props.onLanguageUpdate} fill>
           {
             this.props.languages.data.map(language =>
@@ -19,6 +19,10 @@ class LocaleBar extends PureComponent {
           onChange={this.props.onRtlUpdate}
           label="RTL Text"
         />
+
+        <Handle onClick={this.props.onToggleOpen}>
+          <Icon icon={this.props.open ? "chevron-left" : "chevron-right"} />
+        </Handle>
       </LocaleNavbar>
     );
   }

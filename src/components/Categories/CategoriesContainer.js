@@ -1,10 +1,13 @@
+import { withRouter } from 'react-router-dom';
 import { withNamespaces } from 'react-i18next';
 import { compose, withStateHandlers, withHandlers } from 'recompose';
-import { withFirebaseCollection } from '../HOC/Firebase';
+import { withFirebaseCollection, withFirebaseDocument } from '../HOC/Firebase';
 import firebase from 'firebase';
 import Categories from './Categories';
 
 export default compose(
+  withRouter,
+
   withNamespaces(),
 
   withStateHandlers(
@@ -15,6 +18,11 @@ export default compose(
     {
       onSearchChange: () => (e) => ({ search: e.target.value })
     }
+  ),
+
+  withFirebaseDocument(
+    () => firebase.firestore().collection('users').doc(firebase.auth().currentUser.uid),
+    'user'
   ),
 
   withFirebaseCollection(

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { RegisterContainer, RegisterPage, RegisterHero, RegisterContent, RegisterError, RegisterActions } from './RegisterComponents';
-import { FormGroup, InputGroup, Button, Intent } from '@blueprintjs/core';
+import { RegisterContainer, RegisterPage, RegisterHero, RegisterContent, RegisterError, RegisterActions, RegisterSteps, RegisterStep, RegisterIcon } from './RegisterComponents';
+import { FormGroup, HTMLSelect, InputGroup, Button, Intent, Icon } from '@blueprintjs/core';
 
 class Register extends Component {
   render() {
@@ -10,9 +10,20 @@ class Register extends Component {
     return (
       <RegisterPage>
         <RegisterContainer>
-          <RegisterHero>
-            <h1>{t('Welcome to Nearby!')}</h1>
-            <p>{t('Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.')}</p>
+          <RegisterHero spacious>
+            <RegisterSteps>
+              <RegisterStep active>1</RegisterStep>
+              <RegisterStep>2</RegisterStep>
+              <RegisterStep>3</RegisterStep>
+              <RegisterStep>4</RegisterStep>
+            </RegisterSteps>
+
+            <RegisterIcon>
+              <Icon icon="user" color="#FFF" iconSize={48} />
+            </RegisterIcon>
+
+            <h1>{t('Register')}</h1>
+            <p className="bp3-text-muted">{t('Finding your way in a new place can be tricky. Arryved is here to help you connect with others who share your culture and help you find your community. Welcome home.')}</p>
           </RegisterHero>
 
           <RegisterContent onSubmit={this.props.onSubmit}>
@@ -21,8 +32,25 @@ class Register extends Component {
             </RegisterError>
 
             <FormGroup
+              label={t('Language')}
+              labelInfo={t('(required)')}
+            >
+              <HTMLSelect
+                value={this.props.language}
+                onChange={this.props.onLanguageUpdate}
+                fill
+                large
+              >
+                {this.props.languages.data.map(language =>
+                  <option key={language.id} value={language.id}>{language.name}</option>
+                )}
+              </HTMLSelect>
+            </FormGroup>
+
+            <FormGroup
               label={t('Email')}
               labelFor="email"
+              labelInfo={t('(required)')}
             >
               <InputGroup
                 id="email"
@@ -37,6 +65,7 @@ class Register extends Component {
             <FormGroup
               label={t('Password')}
               labelFor="password"
+              labelInfo={t('(required)')}
             >
               <InputGroup
                 id="password"
@@ -53,11 +82,9 @@ class Register extends Component {
                 intent={Intent.PRIMARY}
                 text={t('Create Account')}
                 type="submit"
+                fill
+                large
               />
-
-              <Link to="/login">
-                {t('Already have an account?')}
-              </Link>
             </RegisterActions>
           </RegisterContent>
         </RegisterContainer>
