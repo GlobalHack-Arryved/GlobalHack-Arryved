@@ -36,6 +36,7 @@ class App extends Component {
     firebase.auth().onAuthStateChanged(async (user) => {
       if (user) {
         const { displayName, email, emailVerified, photoURL, uid, providerData } = user;
+        store.dispatch(setLoggedIn(true));
 
         const profileRef = firebase.firestore().collection('users').doc(uid);
         const profileSnapshot = await profileRef.get();
@@ -44,13 +45,11 @@ class App extends Component {
         const language = languageSnapshot.data();
 
         i18n.changeLanguage(language.locale);
-
         store.dispatch(setUserInfo({ displayName, email, emailVerified, photoURL, uid, providerData, language }));
-        store.dispatch(setLoggedIn(true));
       } else {
+        store.dispatch(setLoggedIn(false));
         i18n.changeLanguage('en');
         document.body.classList.remove('bl3-rtl');
-        store.dispatch(setLoggedIn(false));
       }
     });
 
