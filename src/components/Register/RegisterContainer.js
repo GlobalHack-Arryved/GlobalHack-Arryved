@@ -22,7 +22,7 @@ export default compose(
     {
       onEmailChange: () => (e) => ({ email: e.target.value }),
       onPasswordChange: () => (e) => ({ password: e.target.value }),
-      onLanguageChange: () => (e) => ({ language: e.target.value }),
+      onLanguageChange: () => (language) => ({ language }),
       onError: () => (error) => ({ error })
     }
   ),
@@ -33,11 +33,33 @@ export default compose(
   ),
 
   withHandlers({
-    onSubmit: ({ email, password, history, onError }) => async (e) => {
+    onLanguageUpdate: ({ i18n, onLanguageChange }) => async (e) => {
+      const selectedLanguageId = e.target.value;
+      const db = firebase.firestore();
+      const languageRef = db.collection('languages').doc(selectedLanguageId);
+      const languageSnapshot = await languageRef.get();
+      const { locale, rtl } = languageSnapshot.data();
+      i18n.changeLanguage(locale);
+
+      if (rtl) {
+        document.body.classList.add('bp3-rtl');
+      } else {
+        document.body.classList.remove('bp3-rtl');
+      }
+
+      onLanguageChange(selectedLanguageId);
+    },
+
+    onSubmit: ({ email, password, language, history, onError }) => async (e) => {
       e.preventDefault();
       
       try {
-        await firebase.auth().createUserWithEmailAndPassword(email, password);
+        const db = firebase.firestore();
+        const authResult = await firebase.auth().createUserWithEmailAndPassword(email, password);
+        const newUserId = authResult.user.uid;
+        const profileRef = db.collection('users').doc(newUserId);
+        const languageRef = db.collection('languages').doc(language);
+        await profileRef.set({ language: languageRef });
         history.replace('/register/community');
       } catch (err) {
         onError(err.message);

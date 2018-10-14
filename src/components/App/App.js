@@ -49,6 +49,7 @@ class App extends Component {
         store.dispatch(setLoggedIn(true));
       } else {
         i18n.changeLanguage('en');
+        document.body.classList.remove('bl3-rtl');
         store.dispatch(setLoggedIn(false));
       }
     });

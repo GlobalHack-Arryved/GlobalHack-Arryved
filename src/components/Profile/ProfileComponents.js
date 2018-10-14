@@ -35,7 +35,7 @@ export const ProfileOption = styled.div`
 `;
 
 export const DeleteProfileWrapper = styled.div`
-  padding: 40px 30px 30px 15px;
+  padding: 30px;
 `;
 
 export const ProfilePictureWrapper = styled.div`

@@ -23,13 +23,29 @@ class Register extends Component {
             </RegisterIcon>
 
             <h1>{t('Register')}</h1>
-            <p className="bp3-text-muted">{t('Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.')}</p>
+            <p className="bp3-text-muted">{t('Arryved lets you connect with people in your community and build your life.')}</p>
           </RegisterHero>
 
           <RegisterContent onSubmit={this.props.onSubmit}>
             <RegisterError visible={this.props.error}>
               {this.props.error}
             </RegisterError>
+
+            <FormGroup
+              label={t('Language')}
+              labelInfo={t('(required)')}
+            >
+              <HTMLSelect
+                value={this.props.language}
+                onChange={this.props.onLanguageUpdate}
+                fill
+                large
+              >
+                {this.props.languages.data.map(language =>
+                  <option key={language.id} value={language.id}>{language.name}</option>
+                )}
+              </HTMLSelect>
+            </FormGroup>
 
             <FormGroup
               label={t('Email')}
@@ -59,22 +75,6 @@ class Register extends Component {
                 onChange={this.props.onPasswordChange}
                 required
               />
-            </FormGroup>
-
-            <FormGroup
-              label={t('Language')}
-              labelInfo={t('(required)')}
-            >
-              <HTMLSelect
-                value={this.props.language}
-                onChange={this.props.onLanguageChange}
-                fill
-                large
-              >
-                {this.props.languages.data.map(language =>
-                  <option key={language.id} value={language.id}>{language.name}</option>
-                )}
-              </HTMLSelect>
             </FormGroup>
 
             <RegisterActions>
