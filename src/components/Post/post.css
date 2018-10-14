@@ -48,3 +48,8 @@
   flex-direction: column;
   justify-content: center;
 }
+
+.post-comment-author-wrapper {
+  display: flex;
+  justify-content: space-between;
+}

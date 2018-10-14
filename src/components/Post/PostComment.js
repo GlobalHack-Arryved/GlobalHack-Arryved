@@ -1,10 +1,13 @@
 import React, { PureComponent } from 'react';
 import PostCommentAuthor from './PostCommentAuthorContainer';
+import moment from 'moment-with-locales-es6';
 
 class PostComment extends PureComponent {
-  getTimeAgo() {
-
-  }
+  getTimeAgo = (timestamp) => {
+    const { i18n } = this.props;
+    moment.locale(i18n.language);
+    return moment('' + timestamp, 'X').fromNow();
+  };
 
   render() {
     console.log(this.props);

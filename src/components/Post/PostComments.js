@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import firebase from 'firebase';
-import PostComment from './PostComment';
+import PostComment from './PostCommentContainer';
 import { InputGroup } from '@blueprintjs/core';
 
 class PostComments extends PureComponent {
@@ -18,7 +18,7 @@ class PostComments extends PureComponent {
     try {
       commentsRef.add({
         text: this.state.comment,
-        createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+        createdOn: firebase.firestore.FieldValue.serverTimestamp(),
         user: firebase.firestore().collection('users').doc(currentUser.uid)
       });
 
