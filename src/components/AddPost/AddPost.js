@@ -18,6 +18,7 @@ class AddPost extends Component {
             onChange={this.props.onTitleChange}
             fill
             large
+            required
           />
         </FormGroup>
 
@@ -31,6 +32,7 @@ class AddPost extends Component {
             onChange={this.props.onBodyChange}
             fill
             large
+            required
           />
         </FormGroup>
 
@@ -48,7 +50,7 @@ class AddPost extends Component {
               {t('Choose a Category')}
             </option>
             {this.props.categories.data.map(category =>
-              <option key={category.id} value={category.id}>{category.name}</option>
+              <option key={category.id} value={category.id}>{t(category.name)}</option>
             )}
           </HTMLSelect>
         </FormGroup>

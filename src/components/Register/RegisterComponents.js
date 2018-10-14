@@ -21,6 +21,7 @@ export const RegisterHero = styled.div`
   border-bottom: 1px solid ${Colors.LIGHT_GRAY1};
   background-color: ${Colors.WHITE};
   padding: 55px;
+  padding-right: 150px;
 
   h1 {
     margin: 40px 0 10px 0;

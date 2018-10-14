@@ -32,22 +32,24 @@ export default compose(
     onSubmit: ({ immigrationStatus, visaType, onError, history }) => async (e) => {
       e.preventDefault();
 
-      const auth = firebase.auth();
-      const db = firebase.firestore();
-      const userRef = db.collection('users').doc(auth.currentUser.uid);
-      const visaRef = db.collection('visas').doc(visaType);
-
       try {
-        await userRef.set({
-          immigrationStatus,
-          visaType: visaRef
-        }, {
-          merge: true
-        });
+        if (visaType !== '') {
+          const auth = firebase.auth();
+          const db = firebase.firestore();
+          const userRef = db.collection('users').doc(auth.currentUser.uid);
+          const visaRef = db.collection('visas').doc(visaType);
+
+          await userRef.set({
+            immigrationStatus,
+            visaType: visaRef
+          }, {
+            merge: true
+          });
+        }
 
         history.replace('/');
       } catch (err) {
-        onError(err);
+        onError(err.message);
       }
     }
   })
