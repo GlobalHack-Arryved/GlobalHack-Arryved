@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import firebase from 'firebase';
 import { PostsSearchContainer as PostsSearch } from '.';
 import { PostWrapper, Post, PostTitle, PostBody } from './PostsComponents';
-import { Icon } from '@blueprintjs/core';
+import { Icon, Button } from '@blueprintjs/core';
 
 class Posts extends PureComponent {
   state = {
@@ -60,6 +60,15 @@ class Posts extends PureComponent {
     return (
       <PostWrapper>
         <PostsSearch currentCategoryId={this.props.match.params.category} />
+        <div style={{ padding: '0 10px', marginBottom: 10 }}>
+          <Button
+            icon="add"
+            text="Add a Post"
+            onClick={() => this.props.history.push('/add-post')}
+            fill
+            large
+          />
+        </div>
         {this.state.posts.data.map(this.renderPost.bind(this))}
       </PostWrapper>
     );
