@@ -16,7 +16,7 @@ class PostAuthor extends PureComponent {
         <div className="avatar-blurb">
           <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center'}}>
             <p className="avatar-name">{this.props.author.data.name}</p>
-            {this.props.author.data.tags && this.props.author.data.tags.map((tag, index) => <Tag minimal key={index}>{tag}</Tag>)}
+            {this.props.author.data.tags && this.props.author.data.tags.map((tag, index) => <Tag  icon="small-tick" minimal key={index}>{tag}</Tag>)}
           </div>
           <p className="bp3-text-disabled avatar-bio">{this.props.author.data.bio}</p>
         </div>
