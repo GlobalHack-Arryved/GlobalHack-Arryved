@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import { Tag } from '@blueprintjs/core';
 
 class PostCommentAuthor extends PureComponent {
   render() {
@@ -13,6 +14,9 @@ class PostCommentAuthor extends PureComponent {
         </div>
         <div className="avatar-blurb">
           <p className="avatar-name">{this.props.author.data.name}</p>
+          <div style={{ padding: '0 12px 5px 12px' }}>
+            {this.props.author.data.tags && this.props.author.data.tags.map((tag, index) => <Tag minimal key={index}>{tag}</Tag>)}
+          </div>
           <p className="bp3-text-disabled avatar-bio">{this.props.author.data.bio}</p>
         </div>
       </div>

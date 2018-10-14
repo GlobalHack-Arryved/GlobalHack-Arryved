@@ -64,8 +64,8 @@ class AppNavbar extends PureComponent {
           {
             firebase.auth().currentUser &&
             <Button
-              onClick={() => this.props.history.push('/profile')}
-              icon="user"
+              onClick={() => this.props.history.push('/conversations')}
+              icon="chat"
               minimal
             />
           }
@@ -73,8 +73,8 @@ class AppNavbar extends PureComponent {
           {
             firebase.auth().currentUser &&
             <Button
-              onClick={this.props.onLogout}
-              icon="log-out"
+              onClick={() => this.props.history.push('/profile')}
+              icon="user"
               minimal
             />
           }
