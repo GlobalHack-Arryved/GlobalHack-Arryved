@@ -47,16 +47,19 @@ export default compose(
       try {
         const auth = firebase.auth();
         const db = firebase.firestore();
+        const categoryRef = db.collection('categories').doc(category);
+        const userRef = db.collection('users').doc(auth.currentUser.uid);
+        const cityRef = db.collection('cities').doc(user.data.city.id);
         
         const postRef = await db.collection('posts').add({
           title,
           body,
-          category: `/categories/${category}`,
-          user: `/users/${auth.currentUser.uid}`,
-          city: `/cities/${user.data.city.id}`,
+          category: categoryRef,
+          user: userRef,
+          city: cityRef,
         });
 
-        history.push(`/posts/${postRef.id}`);
+        history.push(`/categories/${category}`);
       } catch (err) {
         onError(err.message);
       }
