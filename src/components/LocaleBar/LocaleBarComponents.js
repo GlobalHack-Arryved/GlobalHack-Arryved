@@ -13,6 +13,8 @@ export const LocaleNavbar = styled(Navbar)`
   width: 280px;
   overflow: hidden;
 
+  z-index: 1000;
+
   .bp3-switch {
     width: 140px;
     margin-bottom: 0;
