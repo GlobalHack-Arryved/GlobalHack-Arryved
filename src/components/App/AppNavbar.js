@@ -10,7 +10,11 @@ class AppNavbar extends PureComponent {
   }
 
   async componentWillReceiveProps(newProps) {
-    if (this.props.user.loading && !newProps.user.loading) {
+    if (
+      this.props.user.loading && 
+      !newProps.user.loading &&
+      newProps.user.data.city
+    ) {
       const citySnapshot = await newProps.user.data.city.get();
       this.setState({ currentCity: { id: citySnapshot.id, ...citySnapshot.data() } })
     }
