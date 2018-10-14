@@ -31,6 +31,7 @@ class AppNavbar extends PureComponent {
           {
             firebase.auth().currentUser &&
             <Button
+              onClick={() => this.props.history.push('/profile')}
               icon="user"
               minimal
             />
