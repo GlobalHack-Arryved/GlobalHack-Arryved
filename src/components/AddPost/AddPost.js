@@ -18,6 +18,7 @@ class AddPost extends Component {
             onChange={this.props.onTitleChange}
             fill
             large
+            required
           />
         </FormGroup>
 
@@ -31,6 +32,7 @@ class AddPost extends Component {
             onChange={this.props.onBodyChange}
             fill
             large
+            required
           />
         </FormGroup>
 
