@@ -13,6 +13,7 @@ import { ProfileContainer as Profile } from '../Register/Profile';
 import { ImmigrationContainer as Immigration } from '../Register/Immigration';
 import { CategoriesContainer as Categories } from '../Categories';
 import { AddPostContainer as AddPost } from '../AddPost';
+import { ProfileContainer as MyProfile } from '../Profile';
 import { Spinner } from '@blueprintjs/core';
 
 class Routes extends Component {
@@ -33,6 +34,12 @@ class Routes extends Component {
         </div>
       );
     }
+
+    if (this.props.userInfo && this.props.userInfo.language && this.props.userInfo.language.rtl) {
+      document.body.classList.add('bp3-rtl');
+    } else {
+      document.body.classList.remove('bp3-rtl');
+    }
     
     return (
       <Router>
@@ -42,8 +49,6 @@ class Routes extends Component {
             <AppNavbar />
           }
 
-          <LocaleBar />
-
           <Switch>
             <Route exact path="/login" component={Login} />
             
@@ -52,6 +57,8 @@ class Routes extends Component {
               path="/"
               render={() => <Redirect to="/categories" />}  
             />
+
+            <ProtectedRoute exact path="/profile" component={MyProfile} />
             
             <ProtectedRoute exact path="/posts/:id" component={Post} />
             <ProtectedRoute exact path="/add-post" component={AddPost} />
