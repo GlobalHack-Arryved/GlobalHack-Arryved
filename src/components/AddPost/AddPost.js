@@ -1,34 +1,66 @@
 import React, { Component } from 'react';
-import { PageContainer } from '../Common/StyledComponents';
-import CategorySelect from './CategorySelect';
-import { RegisterError, SubmitButton, TextInput, TextArea, Form } from './AddPostComponents';
-import { Spinner } from '@blueprintjs/core';
+import { AddPostWrapper, PostContentTextArea } from './AddPostComponents';
+import { FormGroup, InputGroup, Intent, Button, HTMLSelect } from '@blueprintjs/core';
 
 class AddPost extends Component {
   render() {
-    if (this.props.categories.loading || this.props.user.loading) {
-      return <Spinner />
-    }
-
     const { t } = this.props;
 
     return (
-      <PageContainer>
-        <Form onSubmit={this.props.onSubmit}>
-          <RegisterError error={this.props.error} />
-
-          <TextInput onChange={this.props.onTitleChange} placeholder={t('Title')} />
-          <TextArea onChange={this.props.onBodyChange} placeholder={t('Ask a question, share advice, or post a job listing...')} />
-
-          <CategorySelect
-            t={t}
-            categories={this.props.categories}
-            onCategoryChange={this.props.onCategoryChange}
+      <AddPostWrapper onSubmit={this.props.onSubmit}>
+        <FormGroup
+          label={t('Title')}
+          labelInfo={t('(required)')}
+        >
+          <InputGroup
+            placeholder={t('Title')}
+            value={this.props.title}
+            onChange={this.props.onTitleChange}
+            fill
+            large
           />
+        </FormGroup>
 
-          <SubmitButton t={t} />
-        </Form>
-      </PageContainer>
+        <FormGroup
+          label={t('Post Content')}
+          labelInfo={t('(required)')}
+        >
+          <PostContentTextArea
+            placeholder={t('Ask a question, share advice, or post a job listing...')}
+            value={this.props.body}
+            onChange={this.props.onBodyChange}
+            fill
+            large
+          />
+        </FormGroup>
+
+        <FormGroup
+          label={t('Category')}
+          labelInfo={t('(required)')}
+        >
+          <HTMLSelect
+            value={this.props.category}
+            onChange={this.props.onCategoryChange}
+            fill
+            large
+          >
+            <option value="" disabled hidden>
+              {t('Choose a Category')}
+            </option>
+            {this.props.categories.data.map(category =>
+              <option key={category.id} value={category.id}>{category.name}</option>
+            )}
+          </HTMLSelect>
+        </FormGroup>
+
+        <Button
+          intent={Intent.PRIMARY}
+          text={t('Create Post')}
+          type="submit"
+          fill
+          large
+        />
+      </AddPostWrapper>
     );
   }
 }

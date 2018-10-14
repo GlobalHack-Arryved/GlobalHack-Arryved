@@ -1,8 +1,20 @@
 import * as functions from 'firebase-functions';
+import * as admin from 'firebase-admin';
+admin.initializeApp();
 
-// // Start writing Firebase Functions
-// // https://firebase.google.com/docs/functions/typescript
-//
-// export const helloWorld = functions.https.onRequest((request, response) => {
-//  response.send("Hello from Firebase!");
-// });
+export const deleteUser = functions.https.onCall(async (data, context) => {
+  const db = admin.firestore();
+  const batch = db.batch();
+
+  const currentUserId = context.auth.uid;
+  const userRef = db.collection('users').doc(currentUserId);
+  
+  const postsRef = db.collection('posts').where('owner', '==', userRef);
+  const postsSnapshot = await postsRef.get();
+  
+  // Delete all posts and the user object
+  postsSnapshot.docs.forEach(doc => batch.delete(doc.ref));
+  batch.delete(userRef);
+
+  return batch.commit();
+});
