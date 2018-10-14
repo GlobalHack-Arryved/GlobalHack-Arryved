@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import './i18n';
+import i18n from './i18n';
 import { FocusStyleManager } from '@blueprintjs/core';
 
-import firebase from 'firebase/app';
-import 'firebase/auth';
+import firebase from 'firebase';
 
 import { createStore, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
@@ -34,12 +33,22 @@ class App extends Component {
       window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
     );
 
-    firebase.auth().onAuthStateChanged(function(user) {
+    firebase.auth().onAuthStateChanged(async (user) => {
       if (user) {
         const { displayName, email, emailVerified, photoURL, uid, providerData } = user;
-        store.dispatch(setUserInfo({ displayName, email, emailVerified, photoURL, uid, providerData }));
+
+        const profileRef = firebase.firestore().collection('users').doc(uid);
+        const profileSnapshot = await profileRef.get();
+        const languageRef = profileSnapshot.data().language;
+        const languageSnapshot = await languageRef.get();
+        const language = languageSnapshot.data();
+
+        i18n.changeLanguage(language.locale);
+
+        store.dispatch(setUserInfo({ displayName, email, emailVerified, photoURL, uid, providerData, language }));
         store.dispatch(setLoggedIn(true));
       } else {
+        i18n.changeLanguage('en');
         store.dispatch(setLoggedIn(false));
       }
     });
