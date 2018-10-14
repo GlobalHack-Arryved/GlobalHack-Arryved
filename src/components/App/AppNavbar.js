@@ -5,11 +5,34 @@ import { Link } from 'react-router-dom';
 import firebase from 'firebase';
 
 class AppNavbar extends PureComponent {
+  state = {
+    currentCity: null
+  }
+
+  async componentWillReceiveProps(newProps) {
+    if (this.props.user.loading && !newProps.user.loading) {
+      const citySnapshot = await newProps.user.data.city.get();
+      this.setState({ currentCity: { id: citySnapshot.id, ...citySnapshot.data() } })
+    }
+  }
+
   renderLocationMenu() {
     return (
       <Menu>
         {this.props.cities.data.map(city =>
-          <MenuItem key={city.id} icon="circle" text={city.name + ', ' + city.state} />
+          <MenuItem
+            key={city.id}
+            icon={this.state.currentCity.id === city.id ? "selection": "circle"}
+            text={city.name + ', ' + city.state}
+            onClick={async () => {
+              const db = firebase.firestore();
+              const currentUser = firebase.auth().currentUser;
+              const cityRef = db.collection('cities').doc(city.id);
+              const userRef = db.collection('users').doc(currentUser.uid);
+              await userRef.update({ city: cityRef });
+              document.location.reload();
+            }}
+          />
         )}
       </Menu>
     );
@@ -25,9 +48,12 @@ class AppNavbar extends PureComponent {
             </Link>
           </NavbarHeading>
 
-          <Popover content={this.renderLocationMenu()}>
-            <Button icon="map-marker" text="St. Louis, MO" rightIcon="caret-down" />
-          </Popover>
+          {
+            this.state.currentCity &&
+            <Popover content={this.renderLocationMenu()}>
+              <Button icon="map-marker" text={this.state.currentCity.name + ', ' + this.state.currentCity.state} rightIcon="caret-down" />
+            </Popover>
+          }
         </NavbarGroup>
 
         <NavbarGroup align={Alignment.RIGHT}>
