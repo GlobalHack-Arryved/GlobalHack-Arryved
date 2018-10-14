@@ -39,7 +39,7 @@ class Post extends Component {
             </h3>
             <p className="description">{this.props.posts.data.body}</p>
           </div>
-          <PostComments comments={this.props.comments} />
+          <PostComments postId={this.props.match.params.id} t={this.props.t} comments={this.props.comments} />
         </div>
       </div>
     )

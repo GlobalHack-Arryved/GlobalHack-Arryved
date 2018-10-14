@@ -37,6 +37,16 @@ class Profile extends PureComponent {
           <h4>{t('Bio')}</h4>
           <p className="bp3-text-large">{this.props.profile.data.bio}</p>
         </ProfileOption>
+        <DeleteProfileWrapper>
+          <Button
+            intent={Intent.DANGER}
+            text={t('Sign Out')}
+            onClick={() => firebase.auth().signOut()}
+            large
+            fill
+            minimal
+          />
+        </DeleteProfileWrapper>
 
         <DeleteProfileWrapper>
           <Button
