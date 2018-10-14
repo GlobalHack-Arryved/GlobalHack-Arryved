@@ -32,10 +32,10 @@ class PostComments extends PureComponent {
 
     return (
       <div className="comments-wrapper">
-        <div style={{ marginBottom: 10 }}>
+        <div style={{ marginBottom: 20 }}>
           <InputGroup
             icon="chat"
-            placeholder={t('Write a comment...')}
+            placeholder={t('Write a reply...')}
             value={this.state.comment}
             onChange={(e) => this.setState({ comment: e.target.value })}
             onKeyPress={this.onKeyPress}
