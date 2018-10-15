@@ -1,3 +1,7 @@
+# GlobalHack VII 1st Prize Winner 🎉
+
+Finding your way in a new place can be tricky. Arryved is here to help you connect with others who share your culture and help you find your community. Welcome home.
+
 ---
 
 To get started...
