@@ -16,12 +16,7 @@ class App extends Component {
     FocusStyleManager.onlyShowFocusOnTabs();
 
     firebase.initializeApp({
-      apiKey: "AIzaSyAQ7hcpPCNg81xqZE2hjBSTWK9OWcx7kVM",
-      authDomain: "globalhack-vii-yeti.firebaseapp.com",
-      databaseURL: "https://globalhack-vii-yeti.firebaseio.com",
-      projectId: "globalhack-vii-yeti",
-      storageBucket: "globalhack-vii-yeti.appspot.com",
-      messagingSenderId: "295667615578"
+      // Firebase Config Goes Here
     });
 
     firebase.firestore().settings({

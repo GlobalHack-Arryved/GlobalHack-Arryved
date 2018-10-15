@@ -24,8 +24,8 @@ i18n
     nsSeparator: '### not used ###', // we use content as keys
 
     backend: {
-      projectId: '193c815e-315f-45be-81dd-fb684a038b43', // <-- replace with your projectId
-      apiKey: '72a34fb5-3a3b-45b9-9fa5-c1c5c6009b46',
+      projectId: 'locize_project_id', // <-- replace with your projectId
+      apiKey: 'locize_api_key',
       referenceLng: 'en'
     },
 
